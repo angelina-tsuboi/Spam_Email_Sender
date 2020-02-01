@@ -1,0 +1,12 @@
+
+{
+    "test":{
+        "PORT": 3000,
+        "SENDGRID_API_KEY": "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"                 
+        
+    },
+    "development":{
+        "PORT": 3000,
+        "SENDGRID_API_KEY": "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"                            
+    }
+}
