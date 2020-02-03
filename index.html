@@ -6,33 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Spam Mail Bot</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <form action="/angieSmurt" method="post">
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+    <div class="row">
+        <div class="col-3">
+          <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <header>SpamMail</header>
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">SPAM MAIL</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">SENT MAIL</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">CONTACT</a>
+          </div>
         </div>
 
-        <div class="form-group">
-            <label for="sender">Sender address</label>
-            <input type="email" class="form-control" id="sender" aria-describedby="senderHelp" placeholder="Enter sender" name="sender">
-        </div>
+        <div class="spinner-border text-primary" role="status" id="spinner">
+            <span class="sr-only">Loading...</span>
+          </div>
 
-        <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" class="form-control" id="subject" aria-describedby="subjectHelp" placeholder="Enter subject" name="subject">
-        </div>
+        <div class="col-9">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-        <div class="form-group">
-            <label for="message">Message</label>
-            <input type="text" class="form-control" id="message" aria-describedby="messageHelp" placeholder="Enter message" name="message">
-        </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                <form action="/sendMail" method="post">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="sender">Sender address</label>
+                        <input type="email" class="form-control" id="sender" aria-describedby="senderHelp" placeholder="Enter sender" name="sender">
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" aria-describedby="subjectHelp" placeholder="Enter subject" name="subject">
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <input type="text" class="form-control" id="message" aria-describedby="messageHelp" placeholder="Enter message" name="message">
+                    </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+          </div>
+        </div>
+      </div>
+
+<script
+src="https://code.jquery.com/jquery-3.4.1.js"
+integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/script.js"></script>
 </body>
 </html>
