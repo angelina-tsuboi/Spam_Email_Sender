@@ -5,13 +5,17 @@ var {mongoose} = require('./db/mongoose');
 var {Mail} = require('./models/mail');
 const app = express()
 const PORT = 3400 || process.env.PORT;
+const path = require('path');
 const bodyParser = require('body-parser')
 mongoose.connect('mongodb://localhost:27017/SpamMail', {useNewUrlParser: true});
+let ejs = require('ejs')
 
 
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
+app.set('views', path.join(__dirname, 'views'));
+app.set("view engine", 'ejs')
 
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -34,7 +38,17 @@ try{
 }
 
 app.get('/', (req, res) => {
+    // var books = db.getCollection()
     res.sendFile(__dirname + '/index.html')
+})
+
+app.get('/email', async (req,res)=>{
+  let mailResult = await Mail.find({});
+
+  console.log(mailResult);
+  // res.send(mailResult);
+  res.render('spamTemplate', {mailResult});
+
 })
 
 app.post('/sendMail', async(req, res)=>{
@@ -49,7 +63,7 @@ app.post('/sendMail', async(req, res)=>{
     subject: subject
   }
   //saving mail to db
-  let spamMailData = new Mail(mailInfo)
+  var spamMailData = new Mail(mailInfo)
   const spamMailSave = await spamMailData.save()
   console.log(spamMailSave)
   //sending mail using sendgrid

@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Spam Mail History</title>
+    <link rel="stylesheet" href="/mail.css">
+  </head>
+  <body>
+    <h1>Learning To Use EJS</h1>
+    <% mailResult.forEach((mail) => {%>
+        <li><%= mail.subject %></li>
+        <li><%= mail.message %></li>
+        <li><%= mail.email %></li>
+        <li><%= mail.sender %></li>
+    <%}); %>    
+  </body>
+</html>
