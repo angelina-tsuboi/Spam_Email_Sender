@@ -26,8 +26,7 @@ const msg = {
   to: `${email}`,
   from: `${sender}`,
   subject: `${subject}`,
-  text: `${message}`,
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  text: `${message}`
 };
 try{
   await sgMail.send(msg);
@@ -40,6 +39,31 @@ try{
 app.get('/', (req, res) => {
     // var books = db.getCollection()
     res.sendFile(__dirname + '/index.html')
+})
+
+app.get('/pyschoMode', async (req, res) => {
+
+  try{
+    let mailResult = await Mail.find({});
+
+    for(let j = 0; j < mailResult.length; j++)
+    {
+      for(let i = 0; i < 10; i++)
+      {
+        console.log(mailResult[j].email)
+        await SpamMail(mailResult[j].email, 'test@psycho.com', "HAHAHAHAHAH", "I am angie's psycho mailer hahahahahah");
+      }
+    }
+  }catch(e){
+    console.log(e)
+  }
+  
+
+
+
+  
+  
+  res.send("All done HAHAHEHEHEHEHSHSHSHAHAHAH");
 })
 
 app.get('/email', async (req,res)=>{

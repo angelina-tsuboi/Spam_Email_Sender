@@ -3,14 +3,19 @@
   <head>
     <title>Spam Mail History</title>
     <link rel="stylesheet" href="/mail.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Learning To Use EJS</h1>
+    <h1>Mail History</h1>
     <% mailResult.forEach((mail) => {%>
-        <li><%= mail.subject %></li>
-        <li><%= mail.message %></li>
-        <li><%= mail.email %></li>
-        <li><%= mail.sender %></li>
+        <div class="card">
+            <h5 class="card-header"><%= mail.subject %></h5>
+            <div class="card-body">
+              <p class="card-text">Message: <%= mail.message %></p>
+              <p class="card-text">To: <%= mail.email %></p>
+              <p class="card-text">From: <%= mail.sender %></p>
+            </div>
+          </div>
     <%}); %>    
   </body>
 </html>
